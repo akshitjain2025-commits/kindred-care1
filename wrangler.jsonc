@@ -1,0 +1,11 @@
+{
+  "name": "kindred-care-local",
+  "main": "deploy/worker.js",
+  "compatibility_date": "2026-11-01",
+  "assets": { "directory": "./dist", "binding": "ASSETS", "run_worker_first": true },
+  "vars": {
+    "FREEBUFF_CLIENT_ID": "5aa9743d-5e64-4098-ad12-fa190ebed078",
+    "FREEBUFF_ISSUER": "https://freebuff.com/oidc",
+    "APP_ORIGIN": "http://localhost:8787"
+  }
+}

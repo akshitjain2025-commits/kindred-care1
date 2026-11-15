@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+
+# Build output
+build/
+dist/
+deploy/
+server.js
+coverage/
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+.secrets/
+
+# Tooling caches / local runtimes
+.tools/
+.freebuff/
+.wrangler/
+.vite/
+*.log
+
+# Archives and OS noise
+*.zip
+.DS_Store
+
+# Only npm's lockfile is maintained
+bun.lock
+
+# AI Studio helper cache
+.gmp_cache/

@@ -1,0 +1,11 @@
+{
+  "name": "Remix Kindred Care",
+  "description": "Connected eldercare platform with 3D spatial wellness monitoring, shared family care coordination, and a Gemini voice companion.",
+  "requestFramePermissions": [
+    "microphone",
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

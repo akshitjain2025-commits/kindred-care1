@@ -1,0 +1,210 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-display: "Fraunces", Georgia, serif;
+    --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #f8fafc;
+    color: #0f172a;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-mono-tabular {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.perspective-stage {
+  perspective: 1400px;
+  transform-style: preserve-3d;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Senior Lodging Accessibility Modes */
+.senior-scale-comfortable {
+  font-size: 1.09rem;
+}
+
+.senior-scale-comfortable p,
+.senior-scale-comfortable li,
+.senior-scale-comfortable input,
+.senior-scale-comfortable select,
+.senior-scale-comfortable textarea {
+  font-size: 1.04em;
+}
+
+.senior-scale-large {
+  font-size: 1.18rem;
+}
+
+.senior-scale-large p,
+.senior-scale-large li,
+.senior-scale-large input,
+.senior-scale-large select,
+.senior-scale-large textarea {
+  font-size: 1.08em;
+  line-height: 1.65;
+}
+
+.senior-high-contrast {
+  background-color: #ffffff;
+  color: #020617;
+}
+
+.senior-high-contrast .text-slate-500,
+.senior-high-contrast .text-slate-600 {
+  color: #1e293b;
+}
+
+.senior-high-contrast .border-slate-200 {
+  border-color: #64748b;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Dark, thick gradient ring around every control (skiper86 register) */
+@keyframes kindred-ring-sweep {
+  from {
+    filter: hue-rotate(0deg) saturate(1.15) brightness(1.05);
+  }
+  to {
+    filter: hue-rotate(360deg) saturate(1.15) brightness(1.05);
+  }
+}
+
+button:not([data-plain]) {
+  position: relative;
+}
+
+button:not([data-plain])::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  padding: 4px;
+  background: conic-gradient(
+    from 0deg,
+    #0b3b2e,
+    #0e6f8f,
+    #6d28d9,
+    #be185d,
+    #b45309,
+    #0f766e,
+    #0b3b2e
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.25s ease, filter 0.25s ease;
+  z-index: 0;
+  /* Continuous motion: the ring keeps sweeping colour, never static */
+  animation: kindred-ring-sweep 9s linear infinite;
+}
+
+button:not([data-plain]):hover::after,
+button:not([data-plain]):focus-visible::after {
+  animation-duration: 4s;
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  button:not([data-plain])::after {
+    animation: none !important;
+  }
+}
+
+/* Skiper86-style rotating gradient ring (Apple Intelligence register) */
+@keyframes kindred-gradient-spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.kindred-gradient-spin {
+  animation: kindred-gradient-spin 9s linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kindred-gradient-spin {
+    animation: none;
+  }
+}
+
+/* Kinetic opening stage: drifting ambient colour fields behind the hero */
+@keyframes kindred-aurora-drift {
+  0%,
+  100% {
+    transform: translate3d(-3%, -2%, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(3%, 3%, 0) scale(1.09);
+  }
+}
+
+@keyframes kindred-aurora-drift-reverse {
+  0%,
+  100% {
+    transform: translate3d(2%, 3%, 0) scale(1.06);
+  }
+  50% {
+    transform: translate3d(-4%, -3%, 0) scale(1);
+  }
+}
+
+.kindred-aurora {
+  animation: kindred-aurora-drift 22s ease-in-out infinite;
+  will-change: transform;
+}
+
+.kindred-aurora-reverse {
+  animation: kindred-aurora-drift-reverse 26s ease-in-out infinite;
+  will-change: transform;
+}
+
+.kindred-hero-stack {
+  transform-style: preserve-3d;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kindred-aurora,
+  .kindred-aurora-reverse {
+    animation: none;
+  }
+}
